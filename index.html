@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>南京审计大学校园二手物品交易平台</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#3b82f6',
+                        secondary: '#64748b',
+                        accent: '#f97316',
+                        neutral: '#f8fafc',
+                        'neutral-dark': '#1e293b'
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'system-ui', 'sans-serif']
+                    }
+                }
+            }
+        }
+    </script>
+    <style type="text/tailwindcss">
+        @layer utilities {
+            .content-auto {
+                content-visibility: auto;
+            }
+            .text-shadow {
+                text-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            }
+            .card-hover {
+                transition: all 0.3s ease;
+            }
+            .card-hover:hover {
+                transform: translateY(-5px);
+                box-shadow: 0 10px 25px -5px rgba(0,0,0,0.1);
+            }
+        }
+    </style>
+</head>
+<body class="bg-neutral min-h-screen">
+    <!-- 导航栏 -->
+    <nav class="bg-white shadow-md fixed w-full z-50">
+        <div class="container mx-auto px-4 py-3 flex justify-between items-center">
+            <div class="flex items-center space-x-2">
+                <i class="fa fa-exchange text-primary text-2xl"></i>
+                <span class="text-xl font-bold text-neutral-dark">南审二手</span>
+            </div>
+            <div class="hidden md:flex items-center space-x-6">
+                <a href="index.html" class="text-primary font-medium">首页</a>
+                <a href="post.html" class="text-secondary hover:text-primary transition-colors">发布物品</a>
+                <a href="profile.html" class="text-secondary hover:text-primary transition-colors">个人中心</a>
+                <a href="login.html" class="bg-primary text-white px-4 py-2 rounded-md hover:bg-primary/90 transition-colors">登录</a>
+                <a href="register.html" class="border border-primary text-primary px-4 py-2 rounded-md hover:bg-primary/10 transition-colors">注册</a>
+            </div>
+            <div class="md:hidden">
+                <button class="text-secondary hover:text-primary">
+                    <i class="fa fa-bars text-xl"></i>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- 搜索栏 -->
+    <div class="pt-16 pb-6 bg-gradient-to-r from-primary/10 to-accent/10">
+        <div class="container mx-auto px-4">
+            <div class="max-w-3xl mx-auto">
+                <h1 class="text-[clamp(1.5rem,3vw,2.5rem)] font-bold text-center text-neutral-dark mb-4 text-shadow">
+                    南京审计大学校园二手物品交易平台
+                </h1>
+                <p class="text-center text-secondary mb-6">南审学子的专属二手交易平台，轻松买卖，环保生活</p>
+                <div class="flex flex-col md:flex-row gap-2">
+                    <input type="text" placeholder="搜索物品..." class="flex-1 px-4 py-3 rounded-l-md border border-gray-300 focus:outline-none focus:ring-2 focus:ring-primary">
+                    <button class="bg-primary text-white px-6 py-3 rounded-r-md hover:bg-primary/90 transition-colors">
+                        <i class="fa fa-search mr-2"></i>搜索
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 分类导航 -->
+    <div class="container mx-auto px-4 py-6">
+        <div class="flex overflow-x-auto gap-4 pb-2">
+            <button class="whitespace-nowrap bg-primary text-white px-4 py-2 rounded-full">全部</button>
+            <button class="whitespace-nowrap bg-white text-secondary px-4 py-2 rounded-full hover:bg-gray-100">电子产品</button>
+            <button class="whitespace-nowrap bg-white text-secondary px-4 py-2 rounded-full hover:bg-gray-100">书籍</button>
+            <button class="whitespace-nowrap bg-white text-secondary px-4 py-2 rounded-full hover:bg-gray-100">服饰</button>
+            <button class="whitespace-nowrap bg-white text-secondary px-4 py-2 rounded-full hover:bg-gray-100">生活用品</button>
+            <button class="whitespace-nowrap bg-white text-secondary px-4 py-2 rounded-full hover:bg-gray-100">运动器材</button>
+            <button class="whitespace-nowrap bg-white text-secondary px-4 py-2 rounded-full hover:bg-gray-100">其他</button>
+        </div>
+    </div>
+
+    <!-- 物品列表 -->
+    <div class="container mx-auto px-4 py-6">
+        <h2 class="text-xl font-bold text-neutral-dark mb-4">推荐物品</h2>
+        <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+            <!-- 物品卡片 1 -->
+            <a href="item.html?id=1" class="block bg-white rounded-lg shadow-md overflow-hidden card-hover">
+                <div class="h-48 bg-gray-200 relative">
+                    <img src="https://trae-api-cn.mchost.guru/api/ide/v1/text_to_image?prompt=second%20hand%20laptop%20computer%20on%20campus&image_size=square" alt="二手笔记本电脑" class="w-full h-full object-cover">
+                    <span class="absolute top-2 right-2 bg-accent text-white text-xs px-2 py-1 rounded">热销</span>
+                </div>
+                <div class="p-4">
+                    <h3 class="font-medium text-neutral-dark mb-2">二手笔记本电脑</h3>
+                    <p class="text-accent font-bold mb-2">¥2999</p>
+                    <div class="flex justify-between items-center">
+                        <span class="text-secondary text-sm"><i class="fa fa-map-marker mr-1"></i> 东区宿舍</span>
+                        <span class="text-secondary text-sm"><i class="fa fa-clock-o mr-1"></i> 2小时前</span>
+                    </div>
+                </div>
+            </a>
+
+            <!-- 物品卡片 2 -->
+            <a href="item.html?id=2" class="block bg-white rounded-lg shadow-md overflow-hidden card-hover">
+                <div class="h-48 bg-gray-200">
+                    <img src="https://trae-api-cn.mchost.guru/api/ide/v1/text_to_image?prompt=second%20hand%20textbooks%20stack&image_size=square" alt="二手教材" class="w-full h-full object-cover">
+                </div>
+                <div class="p-4">
+                    <h3 class="font-medium text-neutral-dark mb-2">二手教材套装</h3>
+                    <p class="text-accent font-bold mb-2">¥120</p>
+                    <div class="flex justify-between items-center">
+                        <span class="text-secondary text-sm"><i class="fa fa-map-marker mr-1"></i> 图书馆</span>
+                        <span class="text-secondary text-sm"><i class="fa fa-clock-o mr-1"></i> 昨天</span>
+                    </div>
+                </div>
+            </a>
+
+            <!-- 物品卡片 3 -->
+            <a href="item.html?id=3" class="block bg-white rounded-lg shadow-md overflow-hidden card-hover">
+                <div class="h-48 bg-gray-200">
+                    <img src="https://trae-api-cn.mchost.guru/api/ide/v1/text_to_image?prompt=second%20hand%20sports%20equipment%20basketball&image_size=square" alt="篮球" class="w-full h-full object-cover">
+                </div>
+                <div class="p-4">
+                    <h3 class="font-medium text-neutral-dark mb-2">全新篮球</h3>
+                    <p class="text-accent font-bold mb-2">¥80</p>
+                    <div class="flex justify-between items-center">
+                        <span class="text-secondary text-sm"><i class="fa fa-map-marker mr-1"></i> 体育馆</span>
+                        <span class="text-secondary text-sm"><i class="fa fa-clock-o mr-1"></i> 3天前</span>
+                    </div>
+                </div>
+            </a>
+
+            <!-- 物品卡片 4 -->
+            <a href="item.html?id=4" class="block bg-white rounded-lg shadow-md overflow-hidden card-hover">
+                <div class="h-48 bg-gray-200">
+                    <img src="https://trae-api-cn.mchost.guru/api/ide/v1/text_to_image?prompt=second%20hand%20clothing%20winter%20jacket&image_size=square" alt="冬季外套" class="w-full h-full object-cover">
+                </div>
+                <div class="p-4">
+                    <h3 class="font-medium text-neutral-dark mb-2">冬季外套</h3>
+                    <p class="text-accent font-bold mb-2">¥150</p>
+                    <div class="flex justify-between items-center">
+                        <span class="text-secondary text-sm"><i class="fa fa-map-marker mr-1"></i> 西区宿舍</span>
+                        <span class="text-secondary text-sm"><i class="fa fa-clock-o mr-1"></i> 1周前</span>
+                    </div>
+                </div>
+            </a>
+
+            <!-- 物品卡片 5 -->
+            <a href="item.html?id=5" class="block bg-white rounded-lg shadow-md overflow-hidden card-hover">
+                <div class="h-48 bg-gray-200">
+                    <img src="https://trae-api-cn.mchost.guru/api/ide/v1/text_to_image?prompt=second%20hand%20keyboard%20mechanical&image_size=square" alt="机械键盘" class="w-full h-full object-cover">
+                </div>
+                <div class="p-4">
+                    <h3 class="font-medium text-neutral-dark mb-2">机械键盘</h3>
+                    <p class="text-accent font-bold mb-2">¥200</p>
+                    <div class="flex justify-between items-center">
+                        <span class="text-secondary text-sm"><i class="fa fa-map-marker mr-1"></i> 计算机楼</span>
+                        <span class="text-secondary text-sm"><i class="fa fa-clock-o mr-1"></i> 2天前</span>
+                    </div>
+                </div>
+            </a>
+
+            <!-- 物品卡片 6 -->
+            <a href="item.html?id=6" class="block bg-white rounded-lg shadow-md overflow-hidden card-hover">
+                <div class="h-48 bg-gray-200">
+                    <img src="https://trae-api-cn.mchost.guru/api/ide/v1/text_to_image?prompt=second%20hand%20bicycle%20campus&image_size=square" alt="自行车" class="w-full h-full object-cover">
+                </div>
+                <div class="p-4">
+                    <h3 class="font-medium text-neutral-dark mb-2">二手自行车</h3>
+                    <p class="text-accent font-bold mb-2">¥350</p>
+                    <div class="flex justify-between items-center">
+                        <span class="text-secondary text-sm"><i class="fa fa-map-marker mr-1"></i> 南门</span>
+                        <span class="text-secondary text-sm"><i class="fa fa-clock-o mr-1"></i> 4天前</span>
+                    </div>
+                </div>
+            </a>
+
+            <!-- 物品卡片 7 -->
+            <a href="item.html?id=7" class="block bg-white rounded-lg shadow-md overflow-hidden card-hover">
+                <div class="h-48 bg-gray-200">
+                    <img src="https://trae-api-cn.mchost.guru/api/ide/v1/text_to_image?prompt=second%20hand%20headphones%20wireless&image_size=square" alt="无线耳机" class="w-full h-full object-cover">
+                </div>
+                <div class="p-4">
+                    <h3 class="font-medium text-neutral-dark mb-2">无线耳机</h3>
+                    <p class="text-accent font-bold mb-2">¥120</p>
+                    <div class="flex justify-between items-center">
+                        <span class="text-secondary text-sm"><i class="fa fa-map-marker mr-1"></i> 北区宿舍</span>
+                        <span class="text-secondary text-sm"><i class="fa fa-clock-o mr-1"></i> 1天前</span>
+                    </div>
+                </div>
+            </a>
+
+            <!-- 物品卡片 8 -->
+            <a href="item.html?id=8" class="block bg-white rounded-lg shadow-md overflow-hidden card-hover">
+                <div class="h-48 bg-gray-200">
+                    <img src="https://trae-api-cn.mchost.guru/api/ide/v1/text_to_image?prompt=second%20hand%20desk%20lamp&image_size=square" alt="台灯" class="w-full h-full object-cover">
+                </div>
+                <div class="p-4">
+                    <h3 class="font-medium text-neutral-dark mb-2">LED台灯</h3>
+                    <p class="text-accent font-bold mb-2">¥50</p>
+                    <div class="flex justify-between items-center">
+                        <span class="text-secondary text-sm"><i class="fa fa-map-marker mr-1"></i> 南区宿舍</span>
+                        <span class="text-secondary text-sm"><i class="fa fa-clock-o mr-1"></i> 5天前</span>
+                    </div>
+                </div>
+            </a>
+        </div>
+
+        <!-- 加载更多按钮 -->
+        <div class="mt-8 text-center">
+            <button class="bg-white border border-primary text-primary px-6 py-2 rounded-md hover:bg-primary/10 transition-colors">
+                加载更多
+            </button>
+        </div>
+    </div>
+
+    <!-- 底部信息 -->
+    <footer class="bg-neutral-dark text-white py-8 mt-12">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div>
+                    <h3 class="text-lg font-bold mb-4">关于我们</h3>
+                    <p class="text-gray-400">校园二手物品交易平台，致力于为学生提供便捷的二手交易服务，促进资源循环利用。</p>
+                </div>
+                <div>
+                    <h3 class="text-lg font-bold mb-4">快速链接</h3>
+                    <ul class="space-y-2">
+                        <li><a href="index.html" class="text-gray-400 hover:text-white transition-colors">首页</a></li>
+                        <li><a href="post.html" class="text-gray-400 hover:text-white transition-colors">发布物品</a></li>
+                        <li><a href="profile.html" class="text-gray-400 hover:text-white transition-colors">个人中心</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition-colors">帮助中心</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="text-lg font-bold mb-4">联系我们</h3>
+                    <ul class="space-y-2">
+                        <li class="flex items-center"><i class="fa fa-envelope mr-2"></i> contact@nau二手.com</li>
+                        <li class="flex items-center"><i class="fa fa-phone mr-2"></i> 123-4567-8910</li>
+                        <li class="flex items-center"><i class="fa fa-map-marker mr-2"></i> 南京审计大学浦口校区</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="border-t border-gray-700 mt-8 pt-4 text-center text-gray-400">
+                <p>© 2026 南京审计大学校园二手物品交易平台. 保留所有权利.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // 模拟数据加载
+        document.querySelector('button:contains("加载更多")').addEventListener('click', function() {
+            this.innerHTML = '<i class="fa fa-spinner fa-spin mr-2"></i>加载中...';
+            setTimeout(() => {
+                this.innerHTML = '加载更多';
+                alert('已加载全部物品');
+            }, 1000);
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>发布物品 - 南京审计大学校园二手物品交易平台</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#3b82f6',
+                        secondary: '#64748b',
+                        accent: '#f97316',
+                        neutral: '#f8fafc',
+                        'neutral-dark': '#1e293b'
+                    }
+                }
+            }
+        }
+    </script>
+    <style type="text/tailwindcss">
+        @layer utilities {
+            .content-auto {
+                content-visibility: auto;
+            }
+            .form-input {
+                @apply w-full px-4 py-3 rounded-md border border-gray-300 focus:outline-none focus:ring-2 focus:ring-primary transition-colors;
+            }
+            .btn-primary {
+                @apply bg-primary text-white px-6 py-3 rounded-md hover:bg-primary/90 transition-colors font-medium;
+            }
+            .btn-secondary {
+                @apply border border-gray-300 text-secondary px-6 py-3 rounded-md hover:bg-gray-100 transition-colors font-medium;
+            }
+        }
+    </style>
+</head>
+<body class="bg-neutral min-h-screen">
+    <!-- 导航栏 -->
+    <nav class="bg-white shadow-md fixed w-full z-50">
+        <div class="container mx-auto px-4 py-3 flex justify-between items-center">
+            <div class="flex items-center space-x-2">
+                <i class="fa fa-exchange text-primary text-2xl"></i>
+                <span class="text-xl font-bold text-neutral-dark">南审二手</span>
+            </div>
+            <div class="hidden md:flex items-center space-x-6">
+                <a href="index.html" class="text-secondary hover:text-primary transition-colors">首页</a>
+                <a href="post.html" class="text-primary font-medium">发布物品</a>
+                <a href="profile.html" class="text-secondary hover:text-primary transition-colors">个人中心</a>
+                <a href="login.html" class="bg-primary text-white px-4 py-2 rounded-md hover:bg-primary/90 transition-colors">登录</a>
+            </div>
+            <div class="md:hidden">
+                <button class="text-secondary hover:text-primary">
+                    <i class="fa fa-bars text-xl"></i>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- 发布物品表单 -->
+    <div class="container mx-auto px-4 py-20">
+        <div class="max-w-3xl mx-auto bg-white rounded-lg shadow-md p-6">
+            <h2 class="text-2xl font-bold text-neutral-dark mb-6">发布二手物品</h2>
+            <form action="index.html" method="post" enctype="multipart/form-data">
+                <!-- 物品图片 -->
+                <div class="mb-6">
+                    <label class="block text-sm font-medium text-neutral-dark mb-2">物品图片</label>
+                    <div class="grid grid-cols-4 gap-4">
+                        <div class="col-span-1">
+                            <div class="border-2 border-dashed border-gray-300 rounded-lg h-24 flex flex-col items-center justify-center hover:border-primary transition-colors cursor-pointer">
+                                <i class="fa fa-plus text-secondary mb-2"></i>
+                                <span class="text-sm text-secondary">添加图片</span>
+                                <input type="file" id="image-upload" name="images" class="hidden" accept="image/*" multiple>
+                            </div>
+                        </div>
+                        <div class="col-span-3 grid grid-cols-3 gap-2" id="image-preview-container">
+                            <div class="border border-gray-200 rounded-lg h-24 bg-gray-100 flex items-center justify-center image-preview-item">
+                                <i class="fa fa-image text-gray-400"></i>
+                            </div>
+                            <div class="border border-gray-200 rounded-lg h-24 bg-gray-100 flex items-center justify-center image-preview-item">
+                                <i class="fa fa-image text-gray-400"></i>
+                            </div>
+                            <div class="border border-gray-200 rounded-lg h-24 bg-gray-100 flex items-center justify-center image-preview-item">
+                                <i class="fa fa-image text-gray-400"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <p class="text-xs text-secondary mt-2">最多上传5张图片，每张不超过5MB</p>
+                </div>
+
+                <!-- 物品信息 -->
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+                    <div>
+                        <label for="title" class="block text-sm font-medium text-neutral-dark mb-1">物品标题</label>
+                        <input type="text" id="title" name="title" required class="form-input" placeholder="请输入物品标题">
+                    </div>
+                    <div>
+                        <label for="category" class="block text-sm font-medium text-neutral-dark mb-1">分类</label>
+                        <select id="category" name="category" required class="form-input">
+                            <option value="">请选择分类</option>
+                            <option value="electronics">电子产品</option>
+                            <option value="books">书籍</option>
+                            <option value="clothing">服饰</option>
+                            <option value="daily">生活用品</option>
+                            <option value="sports">运动器材</option>
+                            <option value="other">其他</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+                    <div>
+                        <label for="price" class="block text-sm font-medium text-neutral-dark mb-1">价格</label>
+                        <div class="relative">
+                            <span class="absolute left-4 top-1/2 transform -translate-y-1/2 text-secondary">¥</span>
+                            <input type="number" id="price" name="price" required step="0.01" min="0" class="form-input pl-10" placeholder="请输入价格">
+                        </div>
+                    </div>
+                    <div>
+                        <label for="original-price" class="block text-sm font-medium text-neutral-dark mb-1">原价</label>
+                        <div class="relative">
+                            <span class="absolute left-4 top-1/2 transform -translate-y-1/2 text-secondary">¥</span>
+                            <input type="number" id="original-price" name="original-price" step="0.01" min="0" class="form-input pl-10" placeholder="请输入原价">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+                    <div>
+                        <label for="condition" class="block text-sm font-medium text-neutral-dark mb-1">成色</label>
+                        <select id="condition" name="condition" required class="form-input">
+                            <option value="">请选择成色</option>
+                            <option value="new">全新</option>
+                            <option value="like-new">几乎全新</option>
+                            <option value="good">良好</option>
+                            <option value="fair">一般</option>
+                            <option value="poor">较差</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label for="brand" class="block text-sm font-medium text-neutral-dark mb-1">品牌</label>
+                        <input type="text" id="brand" name="brand" class="form-input" placeholder="请输入品牌">
+                    </div>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+                    <div>
+                        <label for="model" class="block text-sm font-medium text-neutral-dark mb-1">型号</label>
+                        <input type="text" id="model" name="model" class="form-input" placeholder="请输入型号">
+                    </div>
+                    <div>
+                        <label for="usage-time" class="block text-sm font-medium text-neutral-dark mb-1">使用时间</label>
+                        <input type="text" id="usage-time" name="usage-time" class="form-input" placeholder="例如：6个月">
+                    </div>
+                </div>
+
+                <div class="mb-6">
+                    <label for="description" class="block text-sm font-medium text-neutral-dark mb-1">物品描述</label>
+                    <textarea id="description" name="description" required rows="4" class="form-input" placeholder="请详细描述物品的成色、使用情况等信息"></textarea>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+                    <div>
+                        <label for="location" class="block text-sm font-medium text-neutral-dark mb-1">交易地点</label>
+                        <input type="text" id="location" name="location" required class="form-input" placeholder="请输入交易地点">
+                    </div>
+                    <div>
+                        <label for="contact" class="block text-sm font-medium text-neutral-dark mb-1">联系方式</label>
+                        <input type="text" id="contact" name="contact" required class="form-input" placeholder="请输入手机号或微信">
+                    </div>
+                </div>
+
+                <!-- 提交按钮 -->
+                <div class="flex justify-end space-x-4">
+                    <button type="button" class="btn-secondary">
+                        预览
+                    </button>
+                    <button type="submit" class="btn-primary">
+                        发布
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- 底部信息 -->
+    <footer class="bg-neutral-dark text-white py-8 mt-12">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div>
+                    <h3 class="text-lg font-bold mb-4">关于我们</h3>
+                    <p class="text-gray-400">校园二手物品交易平台，致力于为学生提供便捷的二手交易服务，促进资源循环利用。</p>
+                </div>
+                <div>
+                    <h3 class="text-lg font-bold mb-4">快速链接</h3>
+                    <ul class="space-y-2">
+                        <li><a href="index.html" class="text-gray-400 hover:text-white transition-colors">首页</a></li>
+                        <li><a href="post.html" class="text-gray-400 hover:text-white transition-colors">发布物品</a></li>
+                        <li><a href="profile.html" class="text-gray-400 hover:text-white transition-colors">个人中心</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition-colors">帮助中心</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="text-lg font-bold mb-4">联系我们</h3>
+                    <ul class="space-y-2">
+                        <li class="flex items-center"><i class="fa fa-envelope mr-2"></i> contact@nau二手.com</li>
+                        <li class="flex items-center"><i class="fa fa-phone mr-2"></i> 123-4567-8910</li>
+                        <li class="flex items-center"><i class="fa fa-map-marker mr-2"></i> 南京审计大学浦口校区</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="border-t border-gray-700 mt-8 pt-4 text-center text-gray-400">
+                <p>© 2026 南京审计大学校园二手物品交易平台. 保留所有权利.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // 图片上传处理
+        const uploadButton = document.querySelector('.border-dashed');
+        const fileInput = document.getElementById('image-upload');
+        const previewContainer = document.getElementById('image-preview-container');
+        const previewItems = document.querySelectorAll('.image-preview-item');
+
+        // 点击上传按钮触发文件选择
+        uploadButton.addEventListener('click', function() {
+            fileInput.click();
+        });
+
+        // 处理文件选择
+        fileInput.addEventListener('change', function(e) {
+            const files = e.target.files;
+            if (files.length > 0) {
+                // 清空现有预览
+                previewContainer.innerHTML = '';
+                
+                // 最多显示5张图片
+                const maxFiles = Math.min(files.length, 5);
+                
+                // 显示选中的图片
+                for (let i = 0; i < maxFiles; i++) {
+                    const file = files[i];
+                    const reader = new FileReader();
+                    
+                    reader.onload = function(e) {
+                        const previewItem = document.createElement('div');
+                        previewItem.className = 'border border-gray-200 rounded-lg h-24 relative overflow-hidden';
+                        previewItem.innerHTML = `
+                            <img src="${e.target.result}" class="w-full h-full object-cover">
+                            <button type="button" class="absolute top-1 right-1 bg-white/80 rounded-full w-6 h-6 flex items-center justify-center text-secondary hover:text-red-500">
+                                <i class="fa fa-times"></i>
+                            </button>
+                        `;
+                        previewContainer.appendChild(previewItem);
+                        
+                        // 添加删除图片功能
+                        previewItem.querySelector('button').addEventListener('click', function() {
+                            previewItem.remove();
+                            // 如果没有图片了，显示默认占位符
+                            if (previewContainer.children.length === 0) {
+                                for (let j = 0; j < 3; j++) {
+                                    const placeholder = document.createElement('div');
+                                    placeholder.className = 'border border-gray-200 rounded-lg h-24 bg-gray-100 flex items-center justify-center';
+                                    placeholder.innerHTML = '<i class="fa fa-image text-gray-400"></i>';
+                                    previewContainer.appendChild(placeholder);
+                                }
+                            }
+                        });
+                    };
+                    
+                    reader.readAsDataURL(file);
+                }
+                
+                // 如果不足3张，添加占位符
+                for (let i = maxFiles; i < 3; i++) {
+                    const placeholder = document.createElement('div');
+                    placeholder.className = 'border border-gray-200 rounded-lg h-24 bg-gray-100 flex items-center justify-center';
+                    placeholder.innerHTML = '<i class="fa fa-image text-gray-400"></i>';
+                    previewContainer.appendChild(placeholder);
+                }
+            }
+        });
+
+        // 表单提交处理
+        document.querySelector('form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            // 模拟发布成功
+            alert('发布成功！');
+            window.location.href = 'index.html';
+        });
+
+        // 预览按钮处理
+        document.querySelector('button[type="button"]').addEventListener('click', function() {
+            alert('预览功能开发中...');
+        });
+    </script>
+</body>
+</html>

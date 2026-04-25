@@ -1,0 +1,548 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>二手笔记本电脑 - 南京审计大学校园二手物品交易平台</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#3b82f6',
+                        secondary: '#64748b',
+                        accent: '#f97316',
+                        neutral: '#f8fafc',
+                        'neutral-dark': '#1e293b'
+                    }
+                }
+            }
+        }
+    </script>
+    <style type="text/tailwindcss">
+        @layer utilities {
+            .content-auto {
+                content-visibility: auto;
+            }
+            .btn-primary {
+                @apply bg-primary text-white px-6 py-3 rounded-md hover:bg-primary/90 transition-colors font-medium;
+            }
+            .btn-secondary {
+                @apply border border-primary text-primary px-6 py-3 rounded-md hover:bg-primary/10 transition-colors font-medium;
+            }
+            .info-item {
+                @apply flex items-start mb-3;
+            }
+            .info-label {
+                @apply w-24 text-secondary font-medium;
+            }
+            .info-value {
+                @apply flex-1 text-neutral-dark;
+            }
+        }
+    </style>
+</head>
+<body class="bg-neutral min-h-screen">
+    <!-- 导航栏 -->
+    <nav class="bg-white shadow-md fixed w-full z-50">
+        <div class="container mx-auto px-4 py-3 flex justify-between items-center">
+            <div class="flex items-center space-x-2">
+                <i class="fa fa-exchange text-primary text-2xl"></i>
+                <span class="text-xl font-bold text-neutral-dark">南审二手</span>
+            </div>
+            <div class="hidden md:flex items-center space-x-6">
+                <a href="index.html" class="text-primary font-medium">首页</a>
+                <a href="post.html" class="text-secondary hover:text-primary transition-colors">发布物品</a>
+                <a href="profile.html" class="text-secondary hover:text-primary transition-colors">个人中心</a>
+                <a href="login.html" class="bg-primary text-white px-4 py-2 rounded-md hover:bg-primary/90 transition-colors">登录</a>
+            </div>
+            <div class="md:hidden">
+                <button class="text-secondary hover:text-primary">
+                    <i class="fa fa-bars text-xl"></i>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- 物品详情 -->
+    <div class="container mx-auto px-4 py-20">
+        <div class="bg-white rounded-lg shadow-md overflow-hidden">
+            <!-- 图片展示 -->
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 p-6">
+                <div>
+                    <div class="h-80 bg-gray-200 mb-4">
+                        <img src="https://trae-api-cn.mchost.guru/api/ide/v1/text_to_image?prompt=second%20hand%20laptop%20computer%20on%20campus&image_size=landscape_4_3" alt="二手笔记本电脑" class="w-full h-full object-cover">
+                    </div>
+                    <div class="grid grid-cols-4 gap-2">
+                        <div class="h-16 bg-gray-200 cursor-pointer border-2 border-primary">
+                            <img src="https://trae-api-cn.mchost.guru/api/ide/v1/text_to_image?prompt=second%20hand%20laptop%20computer%20on%20campus&image_size=square" alt="二手笔记本电脑" class="w-full h-full object-cover">
+                        </div>
+                        <div class="h-16 bg-gray-200 cursor-pointer">
+                            <img src="https://trae-api-cn.mchost.guru/api/ide/v1/text_to_image?prompt=laptop%20keyboard%20close%20up&image_size=square" alt="键盘" class="w-full h-full object-cover">
+                        </div>
+                        <div class="h-16 bg-gray-200 cursor-pointer">
+                            <img src="https://trae-api-cn.mchost.guru/api/ide/v1/text_to_image?prompt=laptop%20side%20view&image_size=square" alt="侧面" class="w-full h-full object-cover">
+                        </div>
+                        <div class="h-16 bg-gray-200 cursor-pointer">
+                            <img src="https://trae-api-cn.mchost.guru/api/ide/v1/text_to_image?prompt=laptop%20back%20view&image_size=square" alt="背面" class="w-full h-full object-cover">
+                        </div>
+                    </div>
+                </div>
+                <div>
+                    <div class="flex justify-between items-start mb-4">
+                        <h1 class="text-2xl font-bold text-neutral-dark">二手笔记本电脑</h1>
+                        <span class="bg-accent text-white text-xs px-2 py-1 rounded">热销</span>
+                    </div>
+                    <div class="mb-6">
+                        <p class="text-3xl font-bold text-accent mb-2">¥2999</p>
+                        <p class="text-secondary line-through">原价: ¥4999</p>
+                    </div>
+                    
+                    <!-- 物品信息 -->
+                    <div class="mb-6">
+                        <div class="info-item">
+                            <span class="info-label">成色:</span>
+                            <span class="info-value">几乎全新</span>
+                        </div>
+                        <div class="info-item">
+                            <span class="info-label">品牌:</span>
+                            <span class="info-value">Apple</span>
+                        </div>
+                        <div class="info-item">
+                            <span class="info-label">型号:</span>
+                            <span class="info-value">MacBook Pro 2023</span>
+                        </div>
+                        <div class="info-item">
+                            <span class="info-label">使用时间:</span>
+                            <span class="info-value">3个月</span>
+                        </div>
+                        <div class="info-item">
+                            <span class="info-label">交易地点:</span>
+                            <span class="info-value">东区宿舍</span>
+                        </div>
+                        <div class="info-item">
+                            <span class="info-label">发布时间:</span>
+                            <span class="info-value">2026-04-24 14:30</span>
+                        </div>
+                    </div>
+                    
+                    <!-- 联系卖家 -->
+                    <div class="flex flex-col sm:flex-row gap-4">
+                        <button class="btn-primary flex items-center justify-center">
+                            <i class="fa fa-phone mr-2"></i> 联系卖家
+                        </button>
+                        <button class="btn-secondary flex items-center justify-center">
+                            <i class="fa fa-heart mr-2"></i> 收藏
+                        </button>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- 物品描述 -->
+            <div class="border-t border-gray-200 p-6">
+                <h2 class="text-xl font-bold text-neutral-dark mb-4">物品描述</h2>
+                <p class="text-neutral-dark mb-4">
+                    转让一台几乎全新的 MacBook Pro 2023，购买于3个月前，因个人原因出售。电脑配置如下：
+                </p>
+                <ul class="list-disc pl-5 text-neutral-dark mb-4 space-y-2">
+                    <li>处理器：M2 Pro</li>
+                    <li>内存：16GB</li>
+                    <li>存储：512GB SSD</li>
+                    <li>屏幕：14英寸 Liquid Retina XDR 显示屏</li>
+                    <li>电池循环次数：仅20次</li>
+                    <li>配件：原装充电器、包装盒齐全</li>
+                </ul>
+                <p class="text-neutral-dark">
+                    电脑无任何划痕和损坏，性能完美，适合学生学习和日常使用。价格可小刀，有意者请联系。
+                </p>
+            </div>
+            
+            <!-- 卖家信息 -->
+            <div class="border-t border-gray-200 p-6">
+                <h2 class="text-xl font-bold text-neutral-dark mb-4">卖家信息</h2>
+                <div class="flex items-center">
+                    <div class="w-12 h-12 rounded-full bg-gray-200 flex items-center justify-center mr-4">
+                        <i class="fa fa-user text-secondary"></i>
+                    </div>
+                    <div>
+                        <h3 class="font-medium text-neutral-dark">张三</h3>
+                        <p class="text-secondary text-sm">东校区 | 发布了12件物品</p>
+                    </div>
+                    <div class="ml-auto">
+                        <button class="btn-secondary">
+                            <i class="fa fa-envelope mr-2"></i> 发送消息
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- 相关推荐 -->
+        <div class="mt-12">
+            <h2 class="text-xl font-bold text-neutral-dark mb-6">相关推荐</h2>
+            <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+                <!-- 推荐物品1 -->
+                <div class="bg-white rounded-lg shadow-md overflow-hidden card-hover">
+                    <div class="h-48 bg-gray-200">
+                        <img src="https://trae-api-cn.mchost.guru/api/ide/v1/text_to_image?prompt=second%20hand%20keyboard%20mechanical&image_size=square" alt="机械键盘" class="w-full h-full object-cover">
+                    </div>
+                    <div class="p-4">
+                        <h3 class="font-medium text-neutral-dark mb-2">机械键盘</h3>
+                        <p class="text-accent font-bold mb-2">¥200</p>
+                        <div class="flex justify-between items-center">
+                            <span class="text-secondary text-sm"><i class="fa fa-map-marker mr-1"></i> 计算机楼</span>
+                            <span class="text-secondary text-sm"><i class="fa fa-clock-o mr-1"></i> 2天前</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- 推荐物品2 -->
+                <div class="bg-white rounded-lg shadow-md overflow-hidden card-hover">
+                    <div class="h-48 bg-gray-200">
+                        <img src="https://trae-api-cn.mchost.guru/api/ide/v1/text_to_image?prompt=second%20hand%20headphones%20wireless&image_size=square" alt="无线耳机" class="w-full h-full object-cover">
+                    </div>
+                    <div class="p-4">
+                        <h3 class="font-medium text-neutral-dark mb-2">无线耳机</h3>
+                        <p class="text-accent font-bold mb-2">¥120</p>
+                        <div class="flex justify-between items-center">
+                            <span class="text-secondary text-sm"><i class="fa fa-map-marker mr-1"></i> 北区宿舍</span>
+                            <span class="text-secondary text-sm"><i class="fa fa-clock-o mr-1"></i> 1天前</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- 推荐物品3 -->
+                <div class="bg-white rounded-lg shadow-md overflow-hidden card-hover">
+                    <div class="h-48 bg-gray-200">
+                        <img src="https://trae-api-cn.mchost.guru/api/ide/v1/text_to_image?prompt=second%20hand%20tablet%20device&image_size=square" alt="平板电脑" class="w-full h-full object-cover">
+                    </div>
+                    <div class="p-4">
+                        <h3 class="font-medium text-neutral-dark mb-2">平板电脑</h3>
+                        <p class="text-accent font-bold mb-2">¥1500</p>
+                        <div class="flex justify-between items-center">
+                            <span class="text-secondary text-sm"><i class="fa fa-map-marker mr-1"></i> 西区宿舍</span>
+                            <span class="text-secondary text-sm"><i class="fa fa-clock-o mr-1"></i> 3天前</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- 推荐物品4 -->
+                <div class="bg-white rounded-lg shadow-md overflow-hidden card-hover">
+                    <div class="h-48 bg-gray-200">
+                        <img src="https://trae-api-cn.mchost.guru/api/ide/v1/text_to_image?prompt=second%20hand%20smartphone&image_size=square" alt="智能手机" class="w-full h-full object-cover">
+                    </div>
+                    <div class="p-4">
+                        <h3 class="font-medium text-neutral-dark mb-2">智能手机</h3>
+                        <p class="text-accent font-bold mb-2">¥2000</p>
+                        <div class="flex justify-between items-center">
+                            <span class="text-secondary text-sm"><i class="fa fa-map-marker mr-1"></i> 南区宿舍</span>
+                            <span class="text-secondary text-sm"><i class="fa fa-clock-o mr-1"></i> 4天前</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 底部信息 -->
+    <footer class="bg-neutral-dark text-white py-8 mt-12">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div>
+                    <h3 class="text-lg font-bold mb-4">关于我们</h3>
+                    <p class="text-gray-400">南京审计大学校园二手物品交易平台，致力于为南审学子提供便捷的二手交易服务，促进资源循环利用。</p>
+                </div>
+                <div>
+                    <h3 class="text-lg font-bold mb-4">快速链接</h3>
+                    <ul class="space-y-2">
+                        <li><a href="index.html" class="text-gray-400 hover:text-white transition-colors">首页</a></li>
+                        <li><a href="post.html" class="text-gray-400 hover:text-white transition-colors">发布物品</a></li>
+                        <li><a href="profile.html" class="text-gray-400 hover:text-white transition-colors">个人中心</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition-colors">帮助中心</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="text-lg font-bold mb-4">联系我们</h3>
+                    <ul class="space-y-2">
+                        <li class="flex items-center"><i class="fa fa-envelope mr-2"></i> contact@nau二手.com</li>
+                        <li class="flex items-center"><i class="fa fa-phone mr-2"></i> 123-4567-8910</li>
+                        <li class="flex items-center"><i class="fa fa-map-marker mr-2"></i> 南京审计大学浦口校区</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="border-t border-gray-700 mt-8 pt-4 text-center text-gray-400">
+                <p>© 2026 南京审计大学校园二手物品交易平台. 保留所有权利.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // 商品数据
+        const products = [
+            {
+                id: 1,
+                title: '二手笔记本电脑',
+                price: 2999,
+                originalPrice: 4999,
+                condition: '几乎全新',
+                brand: 'Apple',
+                model: 'MacBook Pro 2023',
+                usageTime: '3个月',
+                location: '东区宿舍',
+                publishTime: '2026-04-24 14:30',
+                images: [
+                    'https://trae-api-cn.mchost.guru/api/ide/v1/text_to_image?prompt=second%20hand%20laptop%20computer%20on%20campus&image_size=landscape_4_3',
+                    'https://trae-api-cn.mchost.guru/api/ide/v1/text_to_image?prompt=second%20hand%20laptop%20computer%20on%20campus&image_size=square',
+                    'https://trae-api-cn.mchost.guru/api/ide/v1/text_to_image?prompt=laptop%20keyboard%20close%20up&image_size=square',
+                    'https://trae-api-cn.mchost.guru/api/ide/v1/text_to_image?prompt=laptop%20side%20view&image_size=square',
+                    'https://trae-api-cn.mchost.guru/api/ide/v1/text_to_image?prompt=laptop%20back%20view&image_size=square'
+                ],
+                description: '转让一台几乎全新的 MacBook Pro 2023，购买于3个月前，因个人原因出售。电脑配置如下：\n- 处理器：M2 Pro\n- 内存：16GB\n- 存储：512GB SSD\n- 屏幕：14英寸 Liquid Retina XDR 显示屏\n- 电池循环次数：仅20次\n- 配件：原装充电器、包装盒齐全\n\n电脑无任何划痕和损坏，性能完美，适合学生学习和日常使用。价格可小刀，有意者请联系。'
+            },
+            {
+                id: 2,
+                title: '二手教材套装',
+                price: 120,
+                originalPrice: 300,
+                condition: '良好',
+                brand: '高等教育出版社',
+                model: '大学教材套装',
+                usageTime: '1学期',
+                location: '图书馆',
+                publishTime: '2026-04-23 10:15',
+                images: [
+                    'https://trae-api-cn.mchost.guru/api/ide/v1/text_to_image?prompt=second%20hand%20textbooks%20stack&image_size=landscape_4_3',
+                    'https://trae-api-cn.mchost.guru/api/ide/v1/text_to_image?prompt=second%20hand%20textbooks%20stack&image_size=square',
+                    'https://trae-api-cn.mchost.guru/api/ide/v1/text_to_image?prompt=open%20textbook%20pages&image_size=square',
+                    'https://trae-api-cn.mchost.guru/api/ide/v1/text_to_image?prompt=textbook%20cover%20collection&image_size=square'
+                ],
+                description: '转让一套大学教材，包括高等数学、大学物理、线性代数等基础课程教材。书籍保存完好，无缺页，部分书籍有少量笔记，不影响使用。适合大一、大二学生使用，价格实惠，有意者请联系。'
+            },
+            {
+                id: 3,
+                title: '全新篮球',
+                price: 80,
+                originalPrice: 120,
+                condition: '全新',
+                brand: 'Nike',
+                model: 'NBA官方比赛用球',
+                usageTime: '未使用',
+                location: '体育馆',
+                publishTime: '2026-04-21 16:45',
+                images: [
+                    'https://trae-api-cn.mchost.guru/api/ide/v1/text_to_image?prompt=second%20hand%20sports%20equipment%20basketball&image_size=landscape_4_3',
+                    'https://trae-api-cn.mchost.guru/api/ide/v1/text_to_image?prompt=second%20hand%20sports%20equipment%20basketball&image_size=square',
+                    'https://trae-api-cn.mchost.guru/api/ide/v1/text_to_image?prompt=basketball%20close%20up&image_size=square',
+                    'https://trae-api-cn.mchost.guru/api/ide/v1/text_to_image?prompt=basketball%20with%20box&image_size=square'
+                ],
+                description: '转让一个全新的Nike篮球，NBA官方比赛用球，手感极佳，适合室内外使用。因购买过多，现低价转让，有意者请联系。'
+            },
+            {
+                id: 4,
+                title: '冬季外套',
+                price: 150,
+                originalPrice: 350,
+                condition: '良好',
+                brand: 'Uniqlo',
+                model: '保暖羽绒服',
+                usageTime: '1个冬季',
+                location: '西区宿舍',
+                publishTime: '2026-04-18 09:30',
+                images: [
+                    'https://trae-api-cn.mchost.guru/api/ide/v1/text_to_image?prompt=second%20hand%20clothing%20winter%20jacket&image_size=landscape_4_3',
+                    'https://trae-api-cn.mchost.guru/api/ide/v1/text_to_image?prompt=second%20hand%20clothing%20winter%20jacket&image_size=square',
+                    'https://trae-api-cn.mchost.guru/api/ide/v1/text_to_image?prompt=winter%20jacket%20details&image_size=square',
+                    'https://trae-api-cn.mchost.guru/api/ide/v1/text_to_image?prompt=winter%20jacket%20inside&image_size=square'
+                ],
+                description: '转让一件Uniqlo保暖羽绒服，尺码M，适合身高170-175cm的同学。衣服保暖性好，去年冬季购买，仅穿过几次，无破损，清洗干净。因款式更新，现低价转让，有意者请联系。'
+            },
+            {
+                id: 5,
+                title: '机械键盘',
+                price: 200,
+                originalPrice: 400,
+                condition: '良好',
+                brand: 'Logitech',
+                model: 'G915 TKL',
+                usageTime: '6个月',
+                location: '计算机楼',
+                publishTime: '2026-04-22 11:20',
+                images: [
+                    'https://trae-api-cn.mchost.guru/api/ide/v1/text_to_image?prompt=second%20hand%20keyboard%20mechanical&image_size=landscape_4_3',
+                    'https://trae-api-cn.mchost.guru/api/ide/v1/text_to_image?prompt=second%20hand%20keyboard%20mechanical&image_size=square',
+                    'https://trae-api-cn.mchost.guru/api/ide/v1/text_to_image?prompt=mechanical%20keyboard%20close%20up&image_size=square',
+                    'https://trae-api-cn.mchost.guru/api/ide/v1/text_to_image?prompt=keyboard%20backlit&image_size=square'
+                ],
+                description: '转让一个Logitech G915 TKL机械键盘，无线连接，RGB背光，青轴，手感极佳。购买于6个月前，因更换新键盘，现低价转让。键盘无任何问题，配件齐全，有意者请联系。'
+            },
+            {
+                id: 6,
+                title: '二手自行车',
+                price: 350,
+                originalPrice: 800,
+                condition: '良好',
+                brand: '捷安特',
+                model: 'ATX 660',
+                usageTime: '1年',
+                location: '南门',
+                publishTime: '2026-04-20 15:40',
+                images: [
+                    'https://trae-api-cn.mchost.guru/api/ide/v1/text_to_image?prompt=second%20hand%20bicycle%20campus&image_size=landscape_4_3',
+                    'https://trae-api-cn.mchost.guru/api/ide/v1/text_to_image?prompt=second%20hand%20bicycle%20campus&image_size=square',
+                    'https://trae-api-cn.mchost.guru/api/ide/v1/text_to_image?prompt=bicycle%20details&image_size=square',
+                    'https://trae-api-cn.mchost.guru/api/ide/v1/text_to_image?prompt=bicycle%20gears&image_size=square'
+                ],
+                description: '转让一辆捷安特ATX 660山地自行车，购买于1年前，适合校园通勤和轻度越野。车辆保养良好，无 major damage，轮胎磨损轻微。因毕业离校，现低价转让，有意者请联系。'
+            },
+            {
+                id: 7,
+                title: '无线耳机',
+                price: 120,
+                originalPrice: 299,
+                condition: '良好',
+                brand: 'Sony',
+                model: 'WH-1000XM4',
+                usageTime: '3个月',
+                location: '北区宿舍',
+                publishTime: '2026-04-23 14:10',
+                images: [
+                    'https://trae-api-cn.mchost.guru/api/ide/v1/text_to_image?prompt=second%20hand%20headphones%20wireless&image_size=landscape_4_3',
+                    'https://trae-api-cn.mchost.guru/api/ide/v1/text_to_image?prompt=second%20hand%20headphones%20wireless&image_size=square',
+                    'https://trae-api-cn.mchost.guru/api/ide/v1/text_to_image?prompt=wireless%20headphones%20case&image_size=square',
+                    'https://trae-api-cn.mchost.guru/api/ide/v1/text_to_image?prompt=headphones%20details&image_size=square'
+                ],
+                description: '转让一副Sony WH-1000XM4无线降噪耳机，购买于3个月前，降噪效果出色，音质优秀。因收到其他耳机作为礼物，现低价转让。耳机无任何问题，配件齐全，有意者请联系。'
+            },
+            {
+                id: 8,
+                title: 'LED台灯',
+                price: 50,
+                originalPrice: 120,
+                condition: '良好',
+                brand: '飞利浦',
+                model: '护眼台灯',
+                usageTime: '1学期',
+                location: '南区宿舍',
+                publishTime: '2026-04-19 18:25',
+                images: [
+                    'https://trae-api-cn.mchost.guru/api/ide/v1/text_to_image?prompt=second%20hand%20desk%20lamp&image_size=landscape_4_3',
+                    'https://trae-api-cn.mchost.guru/api/ide/v1/text_to_image?prompt=second%20hand%20desk%20lamp&image_size=square',
+                    'https://trae-api-cn.mchost.guru/api/ide/v1/text_to_image?prompt=desk%20lamp%20lighting&image_size=square',
+                    'https://trae-api-cn.mchost.guru/api/ide/v1/text_to_image?prompt=desk%20lamp%20adjustable&image_size=square'
+                ],
+                description: '转让一盏飞利浦护眼台灯，可调节亮度和色温，适合学习和阅读。购买于1学期前，无任何问题，现低价转让，有意者请联系。'
+            }
+        ];
+
+        // 获取URL参数中的商品ID
+        function getProductId() {
+            const urlParams = new URLSearchParams(window.location.search);
+            return parseInt(urlParams.get('id')) || 1;
+        }
+
+        // 根据ID加载商品信息
+        function loadProduct() {
+            const productId = getProductId();
+            const product = products.find(p => p.id === productId);
+            
+            if (product) {
+                // 更新页面标题
+                document.title = `${product.title} - 南京审计大学校园二手物品交易平台`;
+                
+                // 更新主图片
+                const mainImage = document.querySelector('.h-80 img');
+                mainImage.src = product.images[0];
+                mainImage.alt = product.title;
+                
+                // 更新缩略图
+                const thumbnailContainer = document.querySelector('.grid.grid-cols-4.gap-2');
+                thumbnailContainer.innerHTML = '';
+                
+                product.images.forEach((image, index) => {
+                    const thumbnail = document.createElement('div');
+                    thumbnail.className = `h-16 bg-gray-200 cursor-pointer ${index === 0 ? 'border-2 border-primary' : ''}`;
+                    thumbnail.innerHTML = `<img src="${image}" alt="${product.title}" class="w-full h-full object-cover">`;
+                    thumbnailContainer.appendChild(thumbnail);
+                    
+                    // 添加点击事件
+                    thumbnail.addEventListener('click', function() {
+                        // 移除所有缩略图的选中状态
+                        document.querySelectorAll('.h-16.bg-gray-200').forEach(t => t.classList.remove('border-2', 'border-primary'));
+                        // 添加当前缩略图的选中状态
+                        this.classList.add('border-2', 'border-primary');
+                        // 更新主图片
+                        mainImage.src = image;
+                    });
+                });
+                
+                // 更新商品信息
+                document.querySelector('h1').textContent = product.title;
+                document.querySelector('.text-3xl.font-bold.text-accent').textContent = `¥${product.price}`;
+                document.querySelector('.text-secondary.line-through').textContent = `原价: ¥${product.originalPrice}`;
+                
+                // 更新详细参数
+                const infoItems = document.querySelectorAll('.info-item');
+                infoItems[0].querySelector('.info-value').textContent = product.condition;
+                infoItems[1].querySelector('.info-value').textContent = product.brand;
+                infoItems[2].querySelector('.info-value').textContent = product.model;
+                infoItems[3].querySelector('.info-value').textContent = product.usageTime;
+                infoItems[4].querySelector('.info-value').textContent = product.location;
+                infoItems[5].querySelector('.info-value').textContent = product.publishTime;
+                
+                // 更新商品描述
+                const descriptionElement = document.querySelector('.border-t.border-gray-200.p-6 p:first-of-type');
+                const descriptionList = document.querySelector('.border-t.border-gray-200.p-6 ul');
+                const descriptionLast = document.querySelector('.border-t.border-gray-200.p-6 p:last-of-type');
+                
+                const descriptionParts = product.description.split('\n');
+                descriptionElement.textContent = descriptionParts[0];
+                
+                // 更新描述列表
+                if (descriptionParts.length > 2) {
+                    descriptionList.innerHTML = '';
+                    for (let i = 1; i < descriptionParts.length - 1; i++) {
+                        if (descriptionParts[i].trim()) {
+                            const li = document.createElement('li');
+                            li.textContent = descriptionParts[i].replace('- ', '');
+                            descriptionList.appendChild(li);
+                        }
+                    }
+                    descriptionLast.textContent = descriptionParts[descriptionParts.length - 1];
+                }
+            }
+        }
+
+        // 页面加载时加载商品信息
+        window.onload = loadProduct;
+
+        // 联系卖家按钮处理
+        document.querySelector('.btn-primary').addEventListener('click', function() {
+            alert('联系卖家功能开发中...');
+        });
+        
+        // 收藏按钮处理
+        document.querySelector('.btn-secondary:first-of-type').addEventListener('click', function() {
+            this.innerHTML = '<i class="fa fa-heart mr-2"></i> 已收藏';
+            this.classList.remove('border', 'border-primary', 'text-primary', 'hover:bg-primary/10');
+            this.classList.add('bg-red-100', 'text-red-500', 'hover:bg-red-200');
+        });
+        
+        // 发送消息按钮处理
+        document.querySelector('.btn-secondary:last-of-type').addEventListener('click', function() {
+            alert('发送消息功能开发中...');
+        });
+        
+        // 相关推荐物品点击处理
+        document.querySelectorAll('.card-hover').forEach(card => {
+            card.addEventListener('click', function() {
+                // 获取推荐物品的索引并跳转到对应商品
+                const index = Array.from(document.querySelectorAll('.card-hover')).indexOf(card);
+                const productId = (index + 1) % products.length || products.length;
+                window.location.href = `item.html?id=${productId}`;
+            });
+        });
+    </script>
+</body>
+</html>
